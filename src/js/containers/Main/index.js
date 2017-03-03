@@ -11,7 +11,10 @@ const style = {
 }
 
 export default function Main(sources) {
-  const vdom$ = xs.of(
+  const vdom$ = sources.DOM.select('button').events('click')
+  .map(ev => location.assign('/quiz'))
+  .startWith('default')
+  .map(data =>
     <main style={(style)}>
       <Header />
       <MainSection />

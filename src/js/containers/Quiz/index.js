@@ -10,11 +10,36 @@ const style = {
   flexDirection: 'column'
 }
 
+const quizList = [
+  {
+    title: 'title',
+    answer: 'answer',
+    list: [
+      {
+        select: 'select1',
+        judge: true
+      },
+      {
+        select: 'select2',
+        judge: false
+      },
+      {
+        select: 'select3',
+        judge: false
+      },
+      {
+        select: 'select4',
+        judge: false
+      }
+    ]
+  }
+]
+
 export default function Main(sources) {
   const vdom$ = xs.of(
     <main style={(style)}>
       <Header />
-      <QuizComponent />
+      <QuizComponent data={quizList} />
       <Footer />
     </main>
   );
