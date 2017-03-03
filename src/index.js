@@ -1,11 +1,11 @@
 import {run} from '@cycle/run'
 import {makeDOMDriver} from '@cycle/dom'
-import xs from 'xstream';
-import {html} from 'snabbdom-jsx';
 import {makeHistoryDriver, captureClicks} from '@cycle/history';
-import Main from './js/containers/Main/index';
-import Quiz from './js/containers/Quiz/index';
-import NoMatch from './js/containers/NoMatch/index';
+import Main from './js/containers/Main';
+import Quiz from './js/containers/Quiz';
+import Result from './js/containers/Result';
+import NoMatch from './js/containers/NoMatch';
+document.body.style.margin = 0;
 
 const render = route => {
   run(route, {
@@ -20,6 +20,7 @@ const routeMatch = () => {
   switch(url) {
     case '/': return render(Main)
     case '/quiz': return render(Quiz)
+    case '/result': return render(Result)
     default: return render(NoMatch)
   }
 }

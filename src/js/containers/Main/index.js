@@ -3,7 +3,6 @@ import {html} from 'snabbdom-jsx';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import MainSection from './MainSection';
-document.body.style.margin = 0;
 
 const style = {
   minHeight: '100vh',
