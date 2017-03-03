@@ -1,0 +1,21 @@
+.container {
+  display: flex;
+  flex: 1;
+  background-image: url("./bg.jpg");
+  background-position: center center;
+  background-attachment: fixed;
+  background-size: cover;
+  background-color: #464646;
+}
+
+.btn {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  margin: auto;
+  width: 200px;
+  height: 100px;
+  text-align: center;
+}
