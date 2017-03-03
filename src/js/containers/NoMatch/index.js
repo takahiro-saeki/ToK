@@ -2,7 +2,7 @@ import xs from 'xstream';
 import {html} from 'snabbdom-jsx';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
-import MainSection from './MainSection';
+import NoMatch from './NoMatch';
 document.body.style.margin = 0;
 
 const style = {
@@ -15,7 +15,7 @@ export default function Main(sources) {
   const vdom$ = xs.of(
     <main style={(style)}>
       <Header />
-      <MainSection />
+      <NoMatch />
       <Footer />
     </main>
   );

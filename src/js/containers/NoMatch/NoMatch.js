@@ -2,10 +2,10 @@ import xs from 'xstream';
 import {html} from 'snabbdom-jsx';
 import {container, btn} from './style.css';
 
-const MainSection = sources => {
+const NoMatch = sources => {
   return <div className={container}>
-    <button type="button" className={btn}>let's start now!</button>
+    <div type="button" className={btn}>404 error</div>
   </div>
 }
 
-export default MainSection;
+export default NoMatch;
