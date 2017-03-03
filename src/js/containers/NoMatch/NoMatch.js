@@ -1,6 +1,6 @@
 import xs from 'xstream';
 import {html} from 'snabbdom-jsx';
-import {container, btn} from './style.css';
+import {error, container} from './style.css';
 
 const NoMatch = sources => {
   return <div className={container}>

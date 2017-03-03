@@ -22,6 +22,6 @@ export default function Main(sources) {
 
   return {
     DOM: vdom$,
-    history: xs.of('/')
+    history: xs.of('/404')
   };
 }

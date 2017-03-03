@@ -1,9 +1,5 @@
-import {run} from '@cycle/run'
-import {makeDOMDriver} from '@cycle/dom'
 import xs from 'xstream';
 import {html} from 'snabbdom-jsx';
-import {makeHistoryDriver, captureClicks} from '@cycle/history';
-import createHistory from 'history/createBrowserHistory';
 import {container, btn} from './style.css';
 
 const MainSection = sources => {
