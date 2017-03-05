@@ -1,51 +1,16 @@
 import xs from 'xstream';
 import {html} from 'snabbdom-jsx';
-import Header from '../../components/Header';
-import Footer from '../../components/Footer';
-import QuizComponent from './QuizComponent';
-
-const style = {
-  minHeight: '100vh',
-  display: 'flex',
-  flexDirection: 'column'
-}
-
-const quizList = [
-  {
-    title: 'title',
-    answer: 'answer',
-    list: [
-      {
-        select: 'select1',
-        judge: true
-      },
-      {
-        select: 'select2',
-        judge: false
-      },
-      {
-        select: 'select3',
-        judge: false
-      },
-      {
-        select: 'select4',
-        judge: false
-      }
-    ]
-  }
-]
+import intent from './intent';
+import views from './view';
+import models from './model';
 
 export default function Main(sources) {
-  const vdom$ = xs.of(
-    <main style={(style)}>
-      <Header />
-      <QuizComponent data={quizList} />
-      <Footer />
-    </main>
-  );
+  const action$ = intent(sources);
+  const model$ = models(action$)
+  const view$ = views(model$)
 
   return {
-    DOM: vdom$,
+    DOM: view$,
     history: xs.of('/quiz')
   };
 }

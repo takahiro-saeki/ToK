@@ -2194,6 +2194,10 @@ ieee754@^1.1.4:
   version "1.1.8"
   resolved "https://registry.yarnpkg.com/ieee754/-/ieee754-1.1.8.tgz#be33d40ac10ef1926701f6f08a2d86fbfd1ad3e4"
 
+immutable@^3.8.1:
+  version "3.8.1"
+  resolved "https://registry.yarnpkg.com/immutable/-/immutable-3.8.1.tgz#200807f11ab0f72710ea485542de088075f68cd2"
+
 indexes-of@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/indexes-of/-/indexes-of-1.0.1.tgz#f30f716c8e2bd346c7b67d3df3915566a7c05607"
@@ -4519,9 +4523,15 @@ xml-char-classes@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/xml-char-classes/-/xml-char-classes-1.0.0.tgz#64657848a20ffc5df583a42ad8a277b4512bbc4d"
 
-xstream@10.x, xstream@^10.2.0:
+xstream@10.x:
   version "10.2.0"
   resolved "https://registry.yarnpkg.com/xstream/-/xstream-10.2.0.tgz#c121f3f67b34a921f473dd2b596f01ab4646f957"
+  dependencies:
+    symbol-observable "^1.0.2"
+
+xstream@^10.3.0:
+  version "10.3.0"
+  resolved "https://registry.yarnpkg.com/xstream/-/xstream-10.3.0.tgz#ce451d56fa7fcf06cd39c7514bc2939098a5c470"
   dependencies:
     symbol-observable "^1.0.2"
 
