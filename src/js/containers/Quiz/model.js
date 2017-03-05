@@ -1,5 +1,6 @@
 import xs from 'xstream';
 import baseData from './data';
+import base from './quiz';
 
 const initModel = model$ => {
   let defaultReducer$ = model$.filter(action => action.type === 'default')
@@ -11,6 +12,9 @@ const initModel = model$ => {
   let otherReducer$ = model$.filter(action => action.type === 'after2')
   .map(data => Object.assign({}, baseData.diff, data))
 
+  let count$ = model$.filter(action => action.type === 'count')
+  .map(data => Object.assign({}, ))
+
   const returnData = xs.merge(
     defaultReducer$,
     afterReducer$,
@@ -20,8 +24,20 @@ const initModel = model$ => {
   return returnData;
 }
 
+
+const generate = data$ => {
+  const box = []
+  data$.map((init$, i) => {
+    console.log('init data is', init$)
+    box.push(init$)
+  })
+  console.log(box)
+}
+
+generate(base.ques)
+
 const models = modelData => {
-  const data = initModel(modelData).startWith(Object.assign({}, baseData.quizList, {type: 'none2'}))
+  const data = initModel(modelData).startWith(Object.assign({}, base.ques[0], {type: 'none2'}))
   return data
 }
 
