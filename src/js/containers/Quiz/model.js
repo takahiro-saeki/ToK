@@ -2,6 +2,17 @@ import xs from 'xstream';
 import baseData from './data';
 import base from './quiz';
 
+const selectCheck = (identify, data) => {
+  let checkAnswer = null;
+  const check = base.ques[0].list.map((list, i) => {
+    if (list.select === identify) {
+      checkAnswer = list.judge;
+      return checkAnswer;
+    }
+  })
+  return Object.assign({}, base.ques[0], data, {judge: checkAnswer})
+}
+
 const initModel = model$ => {
   let defaultReducer$ = model$.filter(action => action.type === 'default')
   .map(data => Object.assign({}, baseData.diff, data))
@@ -15,29 +26,21 @@ const initModel = model$ => {
   let count$ = model$.filter(action => action.type === 'count')
   .map(data => Object.assign({}, ))
 
+  let opt$ = model$.filter(action => action.type === 'answer')
+  .map(data => selectCheck(data.data, data))
+
   const returnData = xs.merge(
     defaultReducer$,
     afterReducer$,
-    otherReducer$
+    otherReducer$,
+    opt$
   )
 
   return returnData;
 }
 
-
-const generate = data$ => {
-  const box = []
-  data$.map((init$, i) => {
-    console.log('init data is', init$)
-    box.push(init$)
-  })
-  console.log(box)
-}
-
-generate(base.ques)
-
 const models = modelData => {
-  const data = initModel(modelData).startWith(Object.assign({}, base.ques[0], {type: 'none2'}))
+  const data = initModel(modelData).startWith(Object.assign({}, base.ques[0], {type: 'none2'}, {count: 0}))
   return data
 }
 
