@@ -10,31 +10,8 @@ import Main from './js/containers/Main';
 import Quiz from './js/containers/Quiz';
 import Result from './js/containers/Result';
 import NoMatch from './js/containers/NoMatch';
+import ApiTest from './js/containers/API-TEST';
 document.body.style.margin = 0;
-
-const ApiTest = sources => {
-  const action$ = xs.merge(
-    sources.DOM.select('.dec').events('click').mapTo(-1),
-    sources.DOM.select('.inc').events('click').mapTo(+1),
-    sources.DOM.select('.hun').events('click').mapTo(+100)
-  );
-
-  const count$ = action$.fold((x, y) => x + y, 10);
-
-  const vdom$ = count$.map(count =>
-    <div>
-      <button className="dec">Decrement</button>
-      <button className="inc">Increment</button>
-      <button className="hun">Hundred Increment</button>
-    <p>{`Counter: ${count}`}</p>
-    </div>
-  );
-
-  return {
-    DOM: vdom$,
-    history: xs.of('/api-test')
-  };
-}
 
 const render = route => {
   run(route, {

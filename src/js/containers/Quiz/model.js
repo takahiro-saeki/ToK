@@ -4,13 +4,13 @@ import base from './quiz';
 
 const selectCheck = (identify, data) => {
   let checkAnswer = null;
-  const check = base.ques[0].list.map((list, i) => {
+  const check = base.ques[data.count].list.map((list, i) => {
     if (list.select === identify) {
       checkAnswer = list.judge;
       return checkAnswer;
     }
   })
-  return Object.assign({}, base.ques[0], data, {judge: checkAnswer})
+  return Object.assign({}, base.ques[data.count], data, {judge: checkAnswer}, {count: data.count++})
 }
 
 const initModel = model$ => {
@@ -40,8 +40,9 @@ const initModel = model$ => {
 }
 
 const models = modelData => {
-  const data = initModel(modelData).startWith(Object.assign({}, base.ques[0], {type: 'none2'}, {count: 0}))
-  return data
+  const foldData = modelData.fold((x, y) => Object.assign({}, x, y), {count: 1})
+  const data = initModel(foldData).startWith(Object.assign({}, base.ques[0], {type: 'none2'}, {count: 0}))
+  return data;
 }
 
 export default models;
