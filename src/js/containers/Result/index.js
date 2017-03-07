@@ -1,26 +1,18 @@
 import xs from 'xstream';
 import {html} from 'snabbdom-jsx';
-import Header from '../../components/Header';
-import Footer from '../../components/Footer';
-import ResultView from './ResultView';
+import action from './intent';
+import model from './model';
+import view from './view';
 
-const style = {
-  minHeight: '100vh',
-  display: 'flex',
-  flexDirection: 'column'
-}
-
-export default function Main(sources) {
-  const vdom$ = xs.of(
-    <main style={(style)}>
-      <Header />
-      <ResultView />
-      <Footer />
-    </main>
-  );
+const Result = sources => {
+  const action$ = action(sources)
+  const model$ = model(action$)
+  const view$ = view(model$)
 
   return {
-    DOM: vdom$,
+    DOM: view$,
     history: xs.of('/result')
   };
 }
+
+export default Result;

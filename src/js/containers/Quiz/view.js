@@ -16,7 +16,7 @@ const views = view => {
     return (
       <main style={(style)}>
         <Header />
-        <QuizComponent basicData={event} />
+        {event.judge === 'end' ? false : <QuizComponent basicData={event} />}
         <Footer />
       </main>
     )

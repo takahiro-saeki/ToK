@@ -1,8 +1,3 @@
-//for test
-import xs from 'xstream';
-import {html} from 'snabbdom-jsx';
-//until here
-
 import {run} from '@cycle/run'
 import {makeDOMDriver} from '@cycle/dom'
 import {makeHistoryDriver, captureClicks} from '@cycle/history';

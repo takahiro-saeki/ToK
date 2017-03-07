@@ -5,6 +5,8 @@ import {html} from 'snabbdom-jsx';
 const ResultView = sources => {
   return <div>
     <div>it's result.</div>
+  <button type="button" id="replay">戻る</button>
+<button type="button" id="toHome">戻る</button>
   </div>
 }
 
