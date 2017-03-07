@@ -12,14 +12,18 @@ const style = {
 
 const views = view => {
   return view.map(event => {
-    console.log('event is', event)
-    return (
-      <main style={(style)}>
-        <Header />
-        {event.judge === 'end' ? false : <QuizComponent basicData={event} />}
-        <Footer />
-      </main>
-    )
+    if (event.judge === 'end') {
+      location.assign('/result')
+    } else {
+      console.log('event is', event)
+      return (
+        <main style={(style)}>
+          <Header />
+          <QuizComponent basicData={event} />
+          <Footer />
+        </main>
+      )
+    }
   });
 }
 

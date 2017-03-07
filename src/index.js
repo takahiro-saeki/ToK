@@ -1,3 +1,4 @@
+import xs from 'xstream';
 import {run} from '@cycle/run'
 import {makeDOMDriver} from '@cycle/dom'
 import {makeHistoryDriver, captureClicks} from '@cycle/history';
@@ -7,11 +8,13 @@ import Result from './js/containers/Result';
 import NoMatch from './js/containers/NoMatch';
 import ApiTest from './js/containers/API-TEST';
 document.body.style.margin = 0;
+const historyDriver = makeHistoryDriver();
+const history$ = captureClicks(historyDriver);
 
 const render = route => {
   run(route, {
     DOM: makeDOMDriver('#app'),
-    history: makeHistoryDriver()
+    history: history$
   });
 }
 
